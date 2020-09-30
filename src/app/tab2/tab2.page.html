@@ -1,17 +1,88 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar color="dark">
+        <ion-title color="tertiary">
+            Temporizador
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" color="dark">
+    <ion-header collapse="condense">
+        <ion-toolbar color="dark">
+            <ion-title size="large">Temporizador</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-grid>
+        <ion-row>
+            <div class="contenedor">
+                <ion-label>
+                    Ingrese el tiempo de trabajo en minutos:
+                </ion-label>
+                <ion-input type="number" placeholder="20" [(ngModel)]="trabajo"></ion-input>
+            </div>
+
+            <div class="contenedor">
+                <ion-label>
+                    Ingrese el tiempo de descanso en minutos:
+                </ion-label>
+                <ion-input type="number" placeholder="5" [(ngModel)]="descanso"></ion-input>
+            </div>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <div class="contenedor">
+                    <ion-button shape="round" expand="full" color="tertiary" (click)="inicio(trabajo,descanso)">Empezar</ion-button>
+                </div>
+            </ion-col>
+            <ion-col>
+                <div class="contenedor">
+                    <ion-button shape="round" expand="full" color="danger" (click)="detener()">Parar</ion-button>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-label>
+
+                </ion-label>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <div class="contenedor">
+                    <ion-progress-bar [value]="progreso"></ion-progress-bar>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <div class="contenedor">
+                    <ion-chip color="secondary" *ngIf="estado==1">
+                        <ion-icon name="play-circle-outline" color="secondary"></ion-icon>
+                        <ion-label>Empecemos</ion-label>
+                    </ion-chip>
+                    <ion-chip color="secondary" *ngIf="estado==2">
+                        <ion-icon name="library-outline" color="secondary"></ion-icon>
+                        <ion-label>Trabajando</ion-label>
+                    </ion-chip>
+                    <ion-chip color="secondary" *ngIf="estado==3">
+                        <ion-icon name="bed-outline" color="secondary"></ion-icon>
+                        <ion-label>Descansando</ion-label>
+                    </ion-chip>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div class="container">
+                    <img src="../../assets/pomodoro.jpg" />
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

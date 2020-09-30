@@ -1,17 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar color="dark">
+        <ion-title color="tertiary">
+            Notificaciones
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content color="dark">
+    <ion-list color="dark">
+        <ion-item-sliding *ngFor="let not of notificaciones">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+            <ion-item detail color="dark">
+                <ion-label> {{ not.titulo}} </ion-label>
+                <ion-note slot="end" color="secondary">{{not.creadaEn | date:'short' }}</ion-note>
+            </ion-item>
+
+            <ion-item-options side="end">
+                <ion-item-option (click)="borrarNotificacion( not )" color="danger">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+
+        </ion-item-sliding>
+
+    </ion-list>
+
 </ion-content>

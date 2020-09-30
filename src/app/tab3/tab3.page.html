@@ -1,17 +1,54 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar color="dark">
+        <ion-title color="tertiary">
+            Temperatura
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" color="dark">
+    <ion-header collapse="condense">
+        <ion-toolbar color="dark">
+            <ion-title size="large">Temperatura</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <div class="card">
+                    <ion-label class="subtitle">El rango adecuado para trabajo es de 16° a 25°</ion-label>
+                    <ion-card color="dark">
+                        <ion-card-header>
+                            <ion-card-title>Escoge la temperatura que deseas:</ion-card-title>
+                        </ion-card-header>
+                    </ion-card>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-align-items-center">
+            <ion-col class="ion-align-items-center">
+                <div class="ion-text-center">
+                    <ion-label class="title">
+                        {{temperatura}}°
+                    </ion-label>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <div>
+                    <ion-range min="16" max="25" step="1" [value]="temperatura" snaps color="secondary" default="18" [(ngModel)]="temperatura">
+                        <ion-icon slot="start" size="small" color="primary" name="thermometer"></ion-icon>
+                        <ion-icon slot="end" color="danger" name="thermometer"></ion-icon>
+                    </ion-range>
+                </div>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+
+
 </ion-content>
